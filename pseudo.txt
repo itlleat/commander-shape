@@ -1,0 +1,38 @@
+Commander Shape Pseudo
+w/george yoo
+
+Packages
+- ins jest and inquirer
+
+
+Entry to application: index.js
+
+Classes:
+1.  Menu class - ask the questions for the prompt
+	1a. we need to have a main method and everything will go in here.
+	1b. collect user input with inquirer prompts
+		1ba. text for logo
+			1baa. send back error if
+		1bb. text color
+		1bc. shape type
+		1bd. shape color
+	1c. which shape does the user select?
+		switch(shape) => {
+		1ca. instantiate a new shape object with the chosen shape.
+}
+		1cb. using the object, set the color
+	1d. instantiate a new SVG object with the text AND the shape selected
+	1e.write the SVG product to file called 'logo.svg'
+
+
+2. Shape (color)
+    1. this.color = color
+    2. circle (classes, render()) - the render method will print out a circle from the circle element
+    3. square (classes, render())
+    4. triangle (classes, render())
+
+
+3. SVG class (text, shape, render())
+
+
+write to file our final SVG product
