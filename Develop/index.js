@@ -1,111 +1,102 @@
-const inquirer = require('inquirer')
-const jest = require('jest')
+// Calling all of our required packages and files
+const inquirer = require("inquirer");
+const fs = require('fs');
+const jest = require("jest");
+const { Shape, Circle, Triangle, Square } = require("./Assets/lib/shape");
+const color = require("color");
+const genSvg = require("./Assets/lib/createSvg");
 
-// Inquirer to run a series of prompts
-inquirer
-  .prompt([
+
+// Here we're creating an async function. 
+// We're using async because the syntax is more legible and easier to run than using promise chains.
+// Promise chains are still very commonly used and can be teamed up with async.
+// For example: await Promise.all([someCall(), anotherCall()]); will await the return of two async functions concurrently.
+
+async function startInquirer() {
+  const { text, textColor, shape, shapeColor } = await inquirer.prompt([
     {
       type: "input",
-      name: "character",
-      message: "Please enter up to three characters",
+      name: "text",
+      message: "Please enter up to three characters.",
+      validate: function (input) {
+        if (input.length > 3) {
+          return "What are you doing, please enter up to three characters.";
+        } else {
+          return true;
+        }
+      },
     },
     {
       type: "input",
-      name: "characterColor",
-      message: "Please enter a color keyword or hexadecimal number for your characters",
+      name: "textColor",
+      message: "Please select text color using Hexidecimal or common keywords.",
+      validate: function (input) {
+        try {
+          color(input);
+          return true;
+        } catch (error) {
+          return "Please enter a valid color name or code :/";
+        }
+      },
     },
     {
-        type: "list",
-        name: "shape",
-        message: "Please select a shape:",
-        choices: ["Circle", "Square", "Triangle"],
+      type: "list",
+      name: "shape",
+      message: "Please choose a shape for your logo.",
+      choices: [
+        { name: "Triangle", value: "Triangle" },
+        { name: "Square", value: "Square" },
+        { name: "Circle", value: "Circle" },
+      ],
+    },
+    {
+      type: "Input",
+      name: "shapeColor",
+      message:
+        "Please select a shape color using Hexidecimal or common keywords.",
+      validate: function (input) {
+        try {
+          color(input);
+          return true;
+        } catch (error) {
+          return "Please enter a valid color name or code :/";
+        }
       },
-      {
-        type: "input",
-        name: "shapeColor",
-        message: "Please enter a color keyword or hexadecimal number for your characters",
-      },
-  ])
+    },
+  ]);
 
-//   // call on the titles in our prompts to link them to the user input
-//   .then((answers) => {
-//     let title = answers.title;
-//     let proDes = answers.proDes;
-//     let inst = answers.inst;
-//     let useInf = answers.useInf;
-//     let contGuide = answers.contGuide;
-//     let test = answers.test;
-//     let license = answers.license;
-//     let user = answers.user;
-//     let email = answers.email;
-//     // Using fs to turn the user inputs (answers) into markdown
-//     fs.writeFile("README.md", generateMarkdown(answers), (err) =>
-//       err ? console.error(err) : console.log("README created!", answers)
-//     );
-//   });
+  let newShape;
+  let svg;
+  switch (shape) {
+    case "Square":
+      newShape = new Square(shapeColor, text, textColor);
+      svg = genSvg.genShapeSvg(newShape);
+      writeToFile(svg);
+      break;
+    case "Triangle":
+      newShape = new Square(shapeColor, text, textColor);
+      svg = genSvg.genShapeSvg(newShape);
+      writeToFile(svg);
+      break;
+    case "Circle":
+      newShape = new Square(shapeColor, text, textColor);
+      svg = genSvg.genShapeSvg(newShape);
+      writeToFile(svg);
+      break;
+    default:
+      console.log("You really should try a valid shape choice");
+      return;
+  }
+}
 
-// const CLI = require('./lib/cli.js');
+function writeToFile(data) {
+  fs.writeToFile("dist/logo.svg", data, { flag: "w" }, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("You did it!");
+    }
+  });
+}
 
-// // Define the Component class
-// class Component {
-//     constructor(children = []) {
-//       this.children = children;
-//     }
-  
-//     render() {
-//       throw new Error("Child class must implement render() method.");
-//     }
-  
-//     renderInnerHTML() {
-//       return this.children.map((child) => {
-//         return typeof child === "string" ? child : child.render();
-//       }).join("");
-//     }
-//   }
-  
-//   // Define the Header class
-//   class Header extends Component {
-//     render() {
-//       const date = new Date().toLocaleDateString();
-//       return `<header class="header"><h1>Todo Today</h1><p>${date}</p></header>`;
-//     }
-//   }
-  
-//   // Define the TaskListItem class
-//   class TaskListItem extends Component {
-//     constructor(children, priority = false) {
-//       super(children);
-//       this.priority = priority;
-//     }
-  
-//     render() {
-//       const className = this.priority ? "tasks-item-priority" : "";
-//       return `<li class="tasks-item ${className}">${this.renderInnerHTML()}</li>`;
-//     }
-//   }
-  
-//   // Define the TaskList class
-//   class TaskList extends Component {
-//     render() {
-//       return `<ul class="tasks">${this.renderInnerHTML()}</ul>`;
-//     }
-//   }
-  
-  
-//   // Create the document
-//   function createDocument() {
-//     const header = new Header();
-//     const taskListItems = [
-//       new TaskListItem("Task 1"),
-//       new TaskListItem("Task 2", true),
-//       new TaskListItem("Task 3")
-//     ];
-//     const taskList = new TaskList(taskListItems);
-  
-//     return header.render() + taskList.render();
-//   }
-  
-
-// const cli = new CLI();
-
-// cli.run();
+startInquirer();
