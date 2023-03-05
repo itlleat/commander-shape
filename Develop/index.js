@@ -1,5 +1,4 @@
 const inquirer = require('inquirer')
-const fs = require('fs')
 const jest = require('jest')
 
 // Inquirer to run a series of prompts
@@ -45,4 +44,68 @@ inquirer
 //     );
 //   });
 
+// const CLI = require('./lib/cli.js');
 
+// // Define the Component class
+// class Component {
+//     constructor(children = []) {
+//       this.children = children;
+//     }
+  
+//     render() {
+//       throw new Error("Child class must implement render() method.");
+//     }
+  
+//     renderInnerHTML() {
+//       return this.children.map((child) => {
+//         return typeof child === "string" ? child : child.render();
+//       }).join("");
+//     }
+//   }
+  
+//   // Define the Header class
+//   class Header extends Component {
+//     render() {
+//       const date = new Date().toLocaleDateString();
+//       return `<header class="header"><h1>Todo Today</h1><p>${date}</p></header>`;
+//     }
+//   }
+  
+//   // Define the TaskListItem class
+//   class TaskListItem extends Component {
+//     constructor(children, priority = false) {
+//       super(children);
+//       this.priority = priority;
+//     }
+  
+//     render() {
+//       const className = this.priority ? "tasks-item-priority" : "";
+//       return `<li class="tasks-item ${className}">${this.renderInnerHTML()}</li>`;
+//     }
+//   }
+  
+//   // Define the TaskList class
+//   class TaskList extends Component {
+//     render() {
+//       return `<ul class="tasks">${this.renderInnerHTML()}</ul>`;
+//     }
+//   }
+  
+  
+//   // Create the document
+//   function createDocument() {
+//     const header = new Header();
+//     const taskListItems = [
+//       new TaskListItem("Task 1"),
+//       new TaskListItem("Task 2", true),
+//       new TaskListItem("Task 3")
+//     ];
+//     const taskList = new TaskList(taskListItems);
+  
+//     return header.render() + taskList.render();
+//   }
+  
+
+// const cli = new CLI();
+
+// cli.run();
