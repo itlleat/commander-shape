@@ -57,11 +57,13 @@ async function startInquirer() {
 },
 ])
 
+// Declaring a new shape constructor to take in user inputs and a svg constructor to tell the app where the results will go.
 const newShape = new shape(text, textColor, shapeColor);
   const svg = genShape.genShape(newShape);
   writeToFile(svg,"examples/logo.svg");
 };
 
+// function to write the file
 function writeToFile(data, path) {
   fs.writeFile(path, data, { flag: "w" }, (err) => {
     if (err) {
