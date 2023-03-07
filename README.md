@@ -21,6 +21,8 @@ Welcome! This application creates a three letter logo inside of a shape as a .sv
 
 ### Screenshot
 
+<img width="818" alt="commander-shape-screenshot" src="https://user-images.githubusercontent.com/118778670/223336467-a69d672d-4f15-4487-9f39-ed21d241b20b.png">
+
 ### Project Video Link
 
 https://drive.google.com/file/d/1MtRmk3c3yHt5h2eEeeW7ubZrQSRA6VP1/view
