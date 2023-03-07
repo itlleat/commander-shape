@@ -59,7 +59,7 @@ async function startInquirer() {
 
 const newShape = new shape(text, textColor, shapeColor);
   const svg = genShape.genShape(newShape);
-  writeToFile(svg,"lib/logo.svg");
+  writeToFile(svg,"examples/logo.svg");
 };
 
 function writeToFile(data, path) {
