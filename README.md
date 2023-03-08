@@ -17,7 +17,7 @@
 
 ## Project Description
 
-Welcome! This application creates a three letter logo inside of a shape as a .svg file using Node.js, Inquirer, and Jest. The user can select a text color and a shape color using common keywords or hexadecimal. To make this app more practical for the average user I've added automation using robotjs so that if the user has an image or color that they prefer, but they don't know the hexadecimal number they can navigate to the project root in the terminal and run ```md
+Welcome! This application creates a three letter logo inside of a shape as a .svg file using Node.js, Inquirer, and Jest. The user can select a text color and a shape color using common keywords or hexadecimal. To make this app more practical for the average user I've added automation using robotjs so that if the user has an image or color that they prefer, but they don't know the hexadecimal number they can navigate to the project root in the terminal and run ```bash
 node colorpicker.js
 ```
 The terminal will display the current coordinates and hexadecimal code for the color of the pixel the cursor is pointing at. Neat. Look at the pseudo in the file if it doesn't work off the bat. 
