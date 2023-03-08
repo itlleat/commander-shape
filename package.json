@@ -9,7 +9,8 @@
     "@svgdotjs/svg.js": "^3.1.2",
     "color": "^4.2.3",
     "fs": "^0.0.1-security",
-    "inquirer": "^8.2.5"
+    "inquirer": "^8.2.5",
+    "robotjs": "^0.6.0"
   },
   "devDependencies": {
     "jest": "^29.4.3"
